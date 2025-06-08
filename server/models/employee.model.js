@@ -2,16 +2,28 @@ import { Schema } from "mongoose";
 import userModel from "./user.model.js";
 
 const EmployeeSchema = new Schema({
-    firstName: {
-        type: String,
-        required: [true, "First name is required"]
-    },
-    lastName: {
-        type: String,
-        required: [true, "Last name is required"]
-    },
-  resume: { type: String }, // This could be a URL to a resume file.
+  firstName: {
+    type: String,
+    required: [true, "First name is required"],
+  },
+  lastName: {
+    type: String,
+    required: [true, "Last name is required"],
+  },
+  email: {
+    type: String,
+    require: true,
+  },
+  password: {
+    type: String,
+    require: true,
+    max: [6],
+    min: [5],
+  },
+  resume: { type: String },
+  // This could be a URL to a resume file.
   skills: [{ type: String }],
+
   experience: [
     {
       company: { type: String },
@@ -29,6 +41,10 @@ const EmployeeSchema = new Schema({
       endDate: { type: Date },
     },
   ],
+  Employeeban: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 export const Employee = userModel.discriminator("Employee", EmployeeSchema);
