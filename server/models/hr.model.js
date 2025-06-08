@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import userModel from "./user.model";
 
 const HrSchema = new Schema({
   hrName: {
@@ -11,39 +10,44 @@ const HrSchema = new Schema({
     require: true,
     unique: true,
   },
-  hrPassword:{
+  hrPassword: {
     type: String,
     require: true,
-    max:[6],
-    min:[5]
+    max: [6],
+    min: [5],
   },
   companyName: {
     type: String,
-    required: [true, "Company name is required"],
+    required: function () {
+      return this.isProfileComplete;
+    },
   },
   companyLogo: {
     type: String,
   }, // URL to your company logo.
   website: {
     type: String,
-    require: true,
+    required: function () {
+      return this.isProfileComplete;
+    },
   },
 
   description: {
     type: String,
-    require: true,
-  },
-  // Optionally, you can reference jobs posted by this employer.
-  jobsPosted: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Job",
+    required: function () {
+      return this.isProfileComplete;
     },
-  ],
-  Hrban:{
-    type:Boolean,
-    default:false,
-  }
+  },
+
+  Hrban: {
+    type: Boolean,
+    default: false,
+  },
+  isProfileComplete: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-export const Hr = userModel.discriminator("Employer", HrSchema);
+const Hr = mongoose.model("Employer", HrSchema);
+export default Hr;
