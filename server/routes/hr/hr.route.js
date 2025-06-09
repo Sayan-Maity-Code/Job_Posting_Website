@@ -4,7 +4,7 @@ import SignInHr from '../../controller/hr/SignIn.hr.js';
 const HrRouter = express.Router();
 // (1) Hr signup
 HrRouter.post('/signup',SignUpHr);
-// (2) Hr signup
+// (2) Hr login
 HrRouter.post('/signin',SignInHr);
 
 export default HrRouter;

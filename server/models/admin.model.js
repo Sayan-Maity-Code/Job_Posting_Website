@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import userModel from "./user.model";
 
 const AdminSchema = new Schema({
   name: { type: String, required: [true, "Admin name is required"] },

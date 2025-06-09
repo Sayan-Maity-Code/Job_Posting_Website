@@ -9,7 +9,7 @@ const SignInHr = async (req, res) => {
       if (isPassword) {
         return res.status(200).json({
           success: true,
-          message: "Login SuccessFul",
+          message: "Login Successful",
         });
       } else {
         return res.status(404).json({

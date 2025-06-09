@@ -9,12 +9,12 @@ const SignUpHr = async (req, res) => {
     if (!isCreate) {
       return res.status(404).json({
         status: false,
-        message: "Hr Create faild",
+        message: "Failed to create HR",
       });
     }
     return res.status(200).json({
       success: true,
-      message: " Hr Created SuccessFul",
+      message: " HR created SuccessFully",
       response: isCreate,
     });
   } catch (error) {
