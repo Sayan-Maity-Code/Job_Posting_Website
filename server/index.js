@@ -8,7 +8,7 @@ const app = express();
 //express middlewire
 app.use(express.json());
 app.use(cookieParser());
-app.use(urlencoded({extended:true}))
+app.use(urlencoded({ extended: true }));
 
 // user middlewire
 app.use("/hr", HrRouter);

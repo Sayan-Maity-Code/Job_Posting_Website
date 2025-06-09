@@ -3,42 +3,35 @@ import mongoose, { Schema } from "mongoose";
 const HrSchema = new Schema({
   hrName: {
     type: String,
-    require: true,
+    required: true,
   },
   hrEmail: {
     type: String,
-    require: true,
+    required: true,
     unique: true,
   },
   hrPassword: {
     type: String,
-    require: true,
-    max: [6],
-    min: [5],
+    required: true,
+    minlength: 5,
+    maxlength: 6,
   },
   companyName: {
     type: String,
-    required: function () {
-      return this.isProfileComplete;
-    },
+    default: "",
   },
   companyLogo: {
     type: String,
-  }, // URL to your company logo.
+    default: "",
+  },
   website: {
     type: String,
-    required: function () {
-      return this.isProfileComplete;
-    },
+    default: "",
   },
-
   description: {
     type: String,
-    required: function () {
-      return this.isProfileComplete;
-    },
+    default: "",
   },
-
   Hrban: {
     type: Boolean,
     default: false,

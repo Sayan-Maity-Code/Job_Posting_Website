@@ -17,7 +17,7 @@ const empSignUp = async (req, res) => {
             return res.status(200).json({
                 status: true,
                 message: "Employee created successfully"
-            })
+            });
         };
             
         
