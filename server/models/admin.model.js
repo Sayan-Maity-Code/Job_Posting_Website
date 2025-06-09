@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import userModel from "./user.model";
 
 const AdminSchema = new Schema({
@@ -10,4 +10,4 @@ const AdminSchema = new Schema({
   },
 });
 
-export const Admin = userModel.discriminator("Admin", AdminSchema);
+export const Admin = mongoose.model("Admin", AdminSchema);

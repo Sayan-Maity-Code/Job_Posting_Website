@@ -1,12 +1,17 @@
-import express from "express";
+import express, { urlencoded } from "express";
 import "dotenv/config";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
-
+import HrRouter from "./routes/hr/hr.route.js";
 const app = express();
 
+//express middlewire
 app.use(express.json());
 app.use(cookieParser());
+app.use(urlencoded({extended:true}))
+
+// user middlewire
+app.use("/hr", HrRouter);
 
 const connectMongoDB = async () => {
   try {

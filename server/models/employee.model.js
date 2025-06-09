@@ -47,4 +47,4 @@ const EmployeeSchema = new Schema({
   },
 });
 
-export const Employee = userModel.discriminator("Employee", EmployeeSchema);
+export const Employee = mongoose.model("Employee", EmployeeSchema);
